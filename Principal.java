@@ -24,6 +24,8 @@ public class Principal {
         switch (num) {
         case 1:
             lista.add(CadastrarEmpregado());
+            //TESTE
+            //System.out.println(lista.get(0));
             break;
         case 2:
             lista.add(CadastrarCliente());
@@ -45,7 +47,6 @@ public class Principal {
         }
 
     }
-
     
     public static Empregado CadastrarEmpregado() {
 
@@ -72,6 +73,9 @@ public class Principal {
         System.out.print("Digite o cpf: ");
         String cpf = new Scanner(System.in).nextLine();
 
+        System.out.print("Digite o nome: ");
+        String nome = new Scanner(System.in).nextLine();
+
         // ce = cadastrar empregado
         Gerente ce = new Gerente();
         ce.setCpf(cpf);
@@ -82,6 +86,9 @@ public class Principal {
         System.out.print("Digite o cpf: ");
         String cpf = new Scanner(System.in).nextLine();
 
+        System.out.print("Digite o nome: ");
+        String nome = new Scanner(System.in).nextLine();
+
         // ce = cadastrar empregado
         Vendedor ce = new Vendedor();
         ce.setCpf(cpf);
@@ -91,6 +98,9 @@ public class Principal {
     public static Cliente CadastrarCliente() {
         System.out.print("Digite o cpf: ");
         String cpf = new Scanner(System.in).nextLine();
+
+        System.out.print("Digite o nome: ");
+        String nome = new Scanner(System.in).nextLine();
 
         // cc = cadastrar cliente
         Cliente cc = new Cliente();
