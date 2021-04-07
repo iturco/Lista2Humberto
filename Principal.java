@@ -38,7 +38,7 @@ public class Principal {
 
             break;
         case 6:
-            lista.remove(RemoverPessoa());
+            RemoverPessoa(lista);
             break;
         default:
             break;
@@ -46,6 +46,7 @@ public class Principal {
 
     }
 
+    
     public static Empregado CadastrarEmpregado() {
 
         Scanner input = new Scanner(System.in);
@@ -95,6 +96,7 @@ public class Principal {
         return cc;
     }
 
+    //PESQUISAR
     /*tirar o void e add o return
     public static void Pesquisar(List<Pessoa> lista) {
         System.out.print("Busca por cpf: ");
