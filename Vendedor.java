@@ -16,7 +16,7 @@ public class Vendedor extends Empregado{
     }
 
     //construtor
-    public Vendedor(){
-        super();
+    public Vendedor(String nome, String cpf){
+        super(nome, cpf);
     }
 }

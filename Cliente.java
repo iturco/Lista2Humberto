@@ -10,7 +10,7 @@ public class Cliente extends Pessoa{
     }
 
     //construtor
-    public Cliente() {
-        super();
+    public Cliente(String nome, String cpf) {
+        super(nome, cpf);
     }    
 }

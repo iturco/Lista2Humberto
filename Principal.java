@@ -10,91 +10,139 @@ public class Principal {
 
         int num;
 
-        System.out.println("Digite o numero do item desejado");
-        System.out.println("1. Cadastar Empregado");
-        System.out.println("2. Cadastar Cliente");
-        System.out.println("3. Pesquisar");
-        System.out.println("4. Lista de Empregados");
-        System.out.println("5. Lista de Clientes");
-        System.out.println("6. Remover");
-        System.out.println("7. Finalizar");
-
-        num = input.nextInt();
         do {
+            System.out.println("Digite o numero do item desejado");
+            System.out.println("1. Cadastar Empregado");
+            System.out.println("2. Cadastar Cliente");
+            System.out.println("3. Pesquisar");
+            System.out.println("4. Lista de Empregados");
+            System.out.println("5. Lista de Clientes");
+            System.out.println("6. Remover");
+            System.out.println("7. Finalizar");
+
+            num = input.nextInt();
+
             switch (num) {
-                case 1:
-                    lista.add(CadastrarEmpregado());
-                    // TESTE
-                    // System.out.println(lista.get(0));
-                    break;
-                case 2:
-                    lista.add(CadastrarCliente());
-                    break;
-                case 3:
-        
-                    break;
-                case 4:
-                    ListarEmpregado(lista);
-                    break;
-                case 5:
-                    ListarCliente(lista);
-                    break;
-                case 6:
-                    RemoverPessoa(lista);
-                    break;
-                default:
-                    break;
-                }
-        
-        } while (num == 7) {
-            System.out.println(" Finish, Finalizado, c'est fini, Fetig");
-        }        
+            case 1:
+                lista.add(CadastrarPessoa(lista, num));
+                // TESTE
+                System.out.println(lista.get(0).getNome());
+                break;
+            case 2:
+                lista.add(CadastrarPessoa(lista, num));
+                System.out.println(lista.get(0).getNome());
+                break;
+            case 3:
+                //pesquisar
+                break;
+            case 4:
+                ListarEmpregado(lista);
+                break;
+            case 5:
+                ListarCliente(lista);
+                break;
+            case 6:
+                RemoverPessoa(lista);
+                break;
+            }
+
+        } while (num != 7);
+        System.out.println("Finish, Finalizado, c'est fini, Fetig");
+
     }
 
-    public static Empregado CadastrarEmpregado() {
+    private static Pessoa CadastrarPessoa(List<Pessoa> lista, int num) {
+        Scanner sc = new Scanner(System.in);
+        // Pessoa novo;
+        Pessoa usuario = null;
+        if (num == 1) { 
+        System.out.println("1 para gerente");
+        System.out.println("2 para vendedor");
 
-        Scanner input = new Scanner(System.in);
-        Empregado empregado = null;
 
-        System.out.println("Digite 1 para Gerente e 2 para Vendedor");
-        int num = input.nextInt();
         switch (num) {
         case 1:
-            empregado = CadastrarGerente();
+           usuario = CadastrarEmpregado(num);
             break;
 
         case 2:
-            empregado = CadastrarVendedor();
+            usuario = CadastrarEmpregado(num);
             break;
         }
-        return empregado;
+        } else {
+            usuario = CadastrarCliente();
+        }
+
+        /*System.out.print("Digite o nome: ");
+        // novo.setNome(sc.nextLine());
+
+        String nome = sc.nextLine();
+
+        System.out.print("Digite o cpf: ");
+        // novo.setCpf(sc.nextLine());*
+
+        String cpf = sc.nextLine();
+        Pessoa usuario = new Pessoa(nome, cpf);*/
+
+        return usuario;
+
+    }
+
+    public static Empregado CadastrarEmpregado(int num) {
+        Scanner input = new Scanner(System.in);
+
+        Empregado emp = null;
+
+        String nome;
+        String cpf;
+
+        switch (num) {
+        case 1:
+            System.out.println("Digite o nome");
+            nome = input.next();
+            System.out.println("Digite o cpf");
+            cpf = input.next();
+
+            emp = new Gerente(nome, cpf);
+            //emp = CadastrarGerente();
+            return emp;
+    
+        case 2:
+            System.out.println("Digite o nome");
+            nome = input.nextLine();
+            System.out.println("Digite o cpf");
+            cpf = input.nextLine();
+
+            emp = new Vendedor(nome, cpf);
+            //emp = CadastrarVendedor();
+            return emp;
+        }
+        return emp;
 
     }
 
     public static Empregado CadastrarGerente() {
-        System.out.print("Digite o cpf: ");
-        String cpf = new Scanner(System.in).nextLine();
+        Scanner input = new Scanner(System.in);
 
-        System.out.print("Digite o nome: ");
-        String nome = new Scanner(System.in).nextLine();
+        System.out.print("Nome: ");
+        String nome = input.nextLine();
+        System.out.print("Cpf: ");
+        String cpf = input.nextLine();
 
-        // ce = cadastrar empregado
-        Gerente ce = new Gerente();
-        ce.setCpf(cpf);
-        return ce;
+        Empregado ger = new Empregado(nome, cpf);
+        return ger;
     }
 
     public static Empregado CadastrarVendedor() {
-        System.out.print("Digite o cpf: ");
-        String cpf = new Scanner(System.in).nextLine();
+        Scanner input = new Scanner(System.in);
 
-        System.out.print("Digite o nome: ");
-        String nome = new Scanner(System.in).nextLine();
+        System.out.print("Nome: ");
+        String nome = input.nextLine();
+        System.out.print("Cpf: ");
+        String cpf = input.nextLine();
 
-        // ce = cadastrar empregado
-        Vendedor ce = new Vendedor();
-        ce.setCpf(cpf);
-        return ce;
+        Vendedor ven = new Vendedor(nome , cpf);
+        return ven;
     }
 
     public static Cliente CadastrarCliente() {
@@ -105,8 +153,7 @@ public class Principal {
         String nome = new Scanner(System.in).nextLine();
 
         // cc = cadastrar cliente
-        Cliente cc = new Cliente();
-        cc.setCpf(cpf);
+        Cliente cc = new Cliente(nome, cpf);
         return cc;
     }
 

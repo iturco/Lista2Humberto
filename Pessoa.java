@@ -16,8 +16,9 @@ public class Pessoa {
     }
 
     //construtor
-    public Pessoa() {
-
+    public Pessoa(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
     }
     
 }

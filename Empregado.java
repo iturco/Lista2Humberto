@@ -10,8 +10,8 @@ public class Empregado extends Pessoa {
     }
     
     //construtor
-    public Empregado(){
-        super();
+    public Empregado(String nome, String cpf){
+        super(nome, cpf);
     }
 
 }

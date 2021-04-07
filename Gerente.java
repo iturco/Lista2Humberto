@@ -16,8 +16,8 @@ public class Gerente extends Empregado{
     } 
 
     //construtor
-    public Gerente (){
-        super();
+    public Gerente (String nome, String cpf){
+       super(nome, cpf);
     }
 
 }
