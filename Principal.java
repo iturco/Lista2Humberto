@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) {
-        List<String> lista = new ArrayList<>();
+        List<Pessoa> lista = new ArrayList<>();
 
         Scanner input = new Scanner(System.in);
 
@@ -23,13 +23,13 @@ public class Principal {
 
         switch (num) {
         case 1:
-            Empregado.add(CadastrarEmpregado());
+            lista.add(CadastrarEmpregado());
             break;
         case 2:
-
+            lista.add(CadastrarCliente());
             break;
         case 3:
-
+            
             break;
         case 4:
 
@@ -85,7 +85,7 @@ public class Principal {
         return ce;
     }
 
-    public static Cliente cadastrarCliente() {
+    public static Cliente CadastrarCliente() {
         Scanner input = new Scanner(System.in);
 
         System.out.print("Digite o cpf: ");
@@ -95,5 +95,9 @@ public class Principal {
         Cliente cc = new Cliente();
         cc.setCpf(cpf);
         return cc;
+    }
+
+    public static Pessoa Pesquisar() {
+        Scanner 
     }
 }
