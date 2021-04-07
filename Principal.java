@@ -26,32 +26,35 @@ public class Principal {
             case 1:
                 lista.add(CadastrarPessoa(lista, num));
                 // TESTE
-                //System.out.println(lista.get(0).getNome());
-                for(int i=0;i<lista.size();i++){
+                // System.out.println(lista.get(0).getNome());
+                for (int i = 0; i < lista.size(); i++) {
                     System.out.println(lista.get(i).getNome());
-                } 
+                }
                 break;
             case 2:
                 lista.add(CadastrarPessoa(lista, num));
                 System.out.println(lista.get(0).getNome());
                 break;
             case 3:
-                //pesquisar
+                // pesquisar
                 break;
             case 4:
                 ListarEmpregado(lista);
-                for(int i=0;i<lista.size();i++){
+                for (int i = 0; i < lista.size(); i++) {
                     System.out.println(lista.get(i).getNome());
                 }
                 break;
             case 5:
                 ListarCliente(lista);
-                for(int i=0;i<lista.size();i++){
+                for (int i = 0; i < lista.size(); i++) {
                     System.out.println(lista.get(i).getNome());
                 }
                 break;
             case 6:
                 RemoverPessoa(lista);
+                for (int i = 0; i < lista.size(); i++) {
+                    System.out.println(lista.get(i).getNome());
+                }
                 break;
             }
 
@@ -64,34 +67,33 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
         // Pessoa novo;
         Pessoa usuario = null;
-        if (num == 1) { 
-        System.out.println("11 para gerente");
-        System.out.println("12 para vendedor");
+        if (num == 1) {
+            System.out.println("11 para gerente");
+            System.out.println("12 para vendedor");
 
-           int teste = sc.nextInt();
-        switch (teste) {
-        case 11:
-           usuario = CadastrarEmpregado(num);
-            break;
+            int teste = sc.nextInt();
+            switch (teste) {
+            case 11:
+                usuario = CadastrarEmpregado(num);
+                break;
 
-        case 12:
-            usuario = CadastrarEmpregado(num);
-            break;
-        }
+            case 12:
+                usuario = CadastrarEmpregado(num);
+                break;
+            }
         } else {
             usuario = CadastrarCliente();
         }
 
-        /*System.out.print("Digite o nome: ");
-        // novo.setNome(sc.nextLine());
-
-        String nome = sc.nextLine();
-
-        System.out.print("Digite o cpf: ");
-        // novo.setCpf(sc.nextLine());*
-
-        String cpf = sc.nextLine();
-        Pessoa usuario = new Pessoa(nome, cpf);*/
+        /*
+         * System.out.print("Digite o nome: "); // novo.setNome(sc.nextLine());
+         * 
+         * String nome = sc.nextLine();
+         * 
+         * System.out.print("Digite o cpf: "); // novo.setCpf(sc.nextLine());*
+         * 
+         * String cpf = sc.nextLine(); Pessoa usuario = new Pessoa(nome, cpf);
+         */
 
         return usuario;
 
@@ -113,9 +115,9 @@ public class Principal {
             cpf = input.next();
 
             emp = new Gerente(nome, cpf);
-            //emp = CadastrarGerente();
+            // emp = CadastrarGerente();
             return emp;
-    
+
         case 2:
             System.out.println("Digite o nome");
             nome = input.nextLine();
@@ -123,7 +125,7 @@ public class Principal {
             cpf = input.nextLine();
 
             emp = new Vendedor(nome, cpf);
-            //emp = CadastrarVendedor();
+            // emp = CadastrarVendedor();
             return emp;
         }
         return emp;
@@ -150,7 +152,7 @@ public class Principal {
         System.out.print("Cpf: ");
         String cpf = input.nextLine();
 
-        Vendedor ven = new Vendedor(nome , cpf);
+        Vendedor ven = new Vendedor(nome, cpf);
         return ven;
     }
 
@@ -180,23 +182,22 @@ public class Principal {
      */
 
     public static void RemoverPessoa(List<Pessoa> lista) {
-       Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        for(int i = 0; i < lista.size(); i++)
-    {
-        Pessoa ParaApagar = lista.get(i);
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.print("Digite o cpf que deseja remover: ");
+            Pessoa ParaApagar = lista.get(i);
 
-       String ProcuraCpf = sc.nextLine();
-        if(ParaApagar.getCpf().equals(ProcuraCpf)){
-            
-            lista.remove(ParaApagar);
+            String ProcuraCpf = sc.nextLine();
+            if (ParaApagar.getCpf().equals(ProcuraCpf)) {
 
-            // Sai do loop.
-            break;
+                lista.remove(ParaApagar);
+                break;
+            }
+
         }
+    }
 
-    }
-    }
     public static void ListarCliente(List<Pessoa> lista) {
         for (int i = 0; i < lista.size(); i++) {
             if (lista instanceof Cliente) {
