@@ -32,10 +32,10 @@ public class Principal {
             
             break;
         case 4:
-
+            ListarEmpregado(lista);
             break;
         case 5:
-
+            ListarCliente(lista);
             break;
         case 6:
             RemoverPessoa(lista);
@@ -64,6 +64,8 @@ public class Principal {
             break;
         }
         return empregado;
+
+
     }
 
     public static Empregado CadastrarGerente() {
@@ -122,4 +124,20 @@ public class Principal {
         }
  
     }
+    public static void ListarCliente(List<Pessoa> lista) {
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista instanceof Cliente) {
+                System.out.println(lista.get(i).getNome());
+            }
+        }
+    }
+
+    public static void ListarEmpregado(List<Pessoa> lista) {
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista instanceof Empregado) {
+                System.out.println(lista.get(i).getNome());
+            }
+        }
+    }
+
 }
