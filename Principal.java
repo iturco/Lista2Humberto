@@ -38,7 +38,7 @@ public class Principal {
 
             break;
         case 6:
-
+            lista.remove(RemoverPessoa());
             break;
         default:
             break;
@@ -86,8 +86,6 @@ public class Principal {
     }
 
     public static Cliente CadastrarCliente() {
-        Scanner input = new Scanner(System.in);
-
         System.out.print("Digite o cpf: ");
         String cpf = new Scanner(System.in).nextLine();
 
@@ -97,7 +95,29 @@ public class Principal {
         return cc;
     }
 
-    public static Pessoa Pesquisar() {
-        Scanner 
+    /*tirar o void e add o return
+    public static void Pesquisar(List<Pessoa> lista) {
+        System.out.print("Busca por cpf: ");
+        String cpf = new Scanner(System.in).nextLine();
+
+        for(int i = 0; i < lista.size(); i++) {
+            if(lista.contains(cpf)) {
+                
+            }
+        }
+        
+    }*/
+
+    public static void RemoverPessoa(List<Pessoa> lista){
+        System.out.print("Digite o cpf que deseja remover: ");
+        String cpf = new Scanner(System.in).nextLine();
+
+        lista.remove(cpf);
+        if(lista.contains(cpf)) {
+            System.out.print(cpf + "aqui está o cpf procurado");
+        } else {
+            System.out.print("cpf não encontrado");
+        }
+ 
     }
 }
