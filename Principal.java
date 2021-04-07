@@ -20,34 +20,37 @@ public class Principal {
         System.out.println("7. Finalizar");
 
         num = input.nextInt();
-
-        switch (num) {
-        case 1:
-            lista.add(CadastrarEmpregado());
-            //TESTE
-            //System.out.println(lista.get(0));
-            break;
-        case 2:
-            lista.add(CadastrarCliente());
-            break;
-        case 3:
-            
-            break;
-        case 4:
-            ListarEmpregado(lista);
-            break;
-        case 5:
-            ListarCliente(lista);
-            break;
-        case 6:
-            RemoverPessoa(lista);
-            break;
-        default:
-            break;
-        }
-
+        do {
+            switch (num) {
+                case 1:
+                    lista.add(CadastrarEmpregado());
+                    // TESTE
+                    // System.out.println(lista.get(0));
+                    break;
+                case 2:
+                    lista.add(CadastrarCliente());
+                    break;
+                case 3:
+        
+                    break;
+                case 4:
+                    ListarEmpregado(lista);
+                    break;
+                case 5:
+                    ListarCliente(lista);
+                    break;
+                case 6:
+                    RemoverPessoa(lista);
+                    break;
+                default:
+                    break;
+                }
+        
+        } while (num == 7) {
+            System.out.println(" Finish, Finalizado, c'est fini, Fetig");
+        }        
     }
-    
+
     public static Empregado CadastrarEmpregado() {
 
         Scanner input = new Scanner(System.in);
@@ -65,7 +68,6 @@ public class Principal {
             break;
         }
         return empregado;
-
 
     }
 
@@ -108,32 +110,32 @@ public class Principal {
         return cc;
     }
 
-    //PESQUISAR
-    /*tirar o void e add o return
-    public static void Pesquisar(List<Pessoa> lista) {
-        System.out.print("Busca por cpf: ");
-        String cpf = new Scanner(System.in).nextLine();
+    // PESQUISAR
+    /*
+     * tirar o void e add o return public static void Pesquisar(List<Pessoa> lista)
+     * { System.out.print("Busca por cpf: "); String cpf = new
+     * Scanner(System.in).nextLine();
+     * 
+     * for(int i = 0; i < lista.size(); i++) { if(lista.contains(cpf)) {
+     * 
+     * } }
+     * 
+     * }
+     */
 
-        for(int i = 0; i < lista.size(); i++) {
-            if(lista.contains(cpf)) {
-                
-            }
-        }
-        
-    }*/
-
-    public static void RemoverPessoa(List<Pessoa> lista){
+    public static void RemoverPessoa(List<Pessoa> lista) {
         System.out.print("Digite o cpf que deseja remover: ");
         String cpf = new Scanner(System.in).nextLine();
 
         lista.remove(cpf);
-        if(lista.contains(cpf)) {
+        if (lista.contains(cpf)) {
             System.out.print(cpf + "aqui está o cpf procurado");
         } else {
             System.out.print("cpf não encontrado");
         }
- 
+
     }
+
     public static void ListarCliente(List<Pessoa> lista) {
         for (int i = 0; i < lista.size(); i++) {
             if (lista instanceof Cliente) {
