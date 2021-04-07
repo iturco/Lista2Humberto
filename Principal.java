@@ -26,7 +26,10 @@ public class Principal {
             case 1:
                 lista.add(CadastrarPessoa(lista, num));
                 // TESTE
-                System.out.println(lista.get(0).getNome());
+                //System.out.println(lista.get(0).getNome());
+                for(int i=0;i<lista.size();i++){
+                    System.out.println(lista.get(i).getNome());
+                } 
                 break;
             case 2:
                 lista.add(CadastrarPessoa(lista, num));
@@ -37,9 +40,15 @@ public class Principal {
                 break;
             case 4:
                 ListarEmpregado(lista);
+                for(int i=0;i<lista.size();i++){
+                    System.out.println(lista.get(i).getNome());
+                }
                 break;
             case 5:
                 ListarCliente(lista);
+                for(int i=0;i<lista.size();i++){
+                    System.out.println(lista.get(i).getNome());
+                }
                 break;
             case 6:
                 RemoverPessoa(lista);
@@ -56,16 +65,16 @@ public class Principal {
         // Pessoa novo;
         Pessoa usuario = null;
         if (num == 1) { 
-        System.out.println("1 para gerente");
-        System.out.println("2 para vendedor");
+        System.out.println("11 para gerente");
+        System.out.println("12 para vendedor");
 
-
-        switch (num) {
-        case 1:
+           int teste = sc.nextInt();
+        switch (teste) {
+        case 11:
            usuario = CadastrarEmpregado(num);
             break;
 
-        case 2:
+        case 12:
             usuario = CadastrarEmpregado(num);
             break;
         }
@@ -171,18 +180,23 @@ public class Principal {
      */
 
     public static void RemoverPessoa(List<Pessoa> lista) {
-        System.out.print("Digite o cpf que deseja remover: ");
-        String cpf = new Scanner(System.in).nextLine();
+       Scanner sc = new Scanner(System.in);
 
-        lista.remove(cpf);
-        if (lista.contains(cpf)) {
-            System.out.print(cpf + "aqui está o cpf procurado");
-        } else {
-            System.out.print("cpf não encontrado");
+        for(int i = 0; i < lista.size(); i++)
+    {
+        Pessoa ParaApagar = lista.get(i);
+
+       String ProcuraCpf = sc.nextLine();
+        if(ParaApagar.getCpf().equals(ProcuraCpf)){
+            
+            lista.remove(ParaApagar);
+
+            // Sai do loop.
+            break;
         }
 
     }
-
+    }
     public static void ListarCliente(List<Pessoa> lista) {
         for (int i = 0; i < lista.size(); i++) {
             if (lista instanceof Cliente) {
