@@ -11,6 +11,7 @@ public class Principal {
         int num;
 
         do {
+            System.out.println();
             System.out.println("Digite o numero do item desejado");
             System.out.println("1. Cadastar Empregado");
             System.out.println("2. Cadastar Cliente");
@@ -25,36 +26,32 @@ public class Principal {
             switch (num) {
             case 1:
                 lista.add(CadastrarPessoa(lista, num));
-                // TESTE
-                // System.out.println(lista.get(0).getNome());
-                for (int i = 0; i < lista.size(); i++) {
-                    System.out.println(lista.get(i).getNome());
-                }
                 break;
             case 2:
                 lista.add(CadastrarPessoa(lista, num));
-                System.out.println(lista.get(0).getNome());
                 break;
             case 3:
-                // pesquisar
+                Pesquisar(lista);
                 break;
             case 4:
                 ListarEmpregado(lista);
                 for (int i = 0; i < lista.size(); i++) {
-                    System.out.println(lista.get(i).getNome());
+                    if (lista.get(i) instanceof Empregado) {
+                        System.out.println(lista.get(i).getNome());
+                    }
                 }
                 break;
             case 5:
                 ListarCliente(lista);
                 for (int i = 0; i < lista.size(); i++) {
-                    System.out.println(lista.get(i).getNome());
+                    if (lista.get(i) instanceof Cliente) {
+                        System.out.println(lista.get(i).getNome());
+                    }
                 }
+
                 break;
             case 6:
                 RemoverPessoa(lista);
-                for (int i = 0; i < lista.size(); i++) {
-                    System.out.println(lista.get(i).getNome());
-                }
                 break;
             }
 
@@ -84,17 +81,6 @@ public class Principal {
         } else {
             usuario = CadastrarCliente();
         }
-
-        /*
-         * System.out.print("Digite o nome: "); // novo.setNome(sc.nextLine());
-         * 
-         * String nome = sc.nextLine();
-         * 
-         * System.out.print("Digite o cpf: "); // novo.setCpf(sc.nextLine());*
-         * 
-         * String cpf = sc.nextLine(); Pessoa usuario = new Pessoa(nome, cpf);
-         */
-
         return usuario;
 
     }
@@ -157,44 +143,52 @@ public class Principal {
     }
 
     public static Cliente CadastrarCliente() {
-        System.out.print("Digite o cpf: ");
-        String cpf = new Scanner(System.in).nextLine();
-
         System.out.print("Digite o nome: ");
         String nome = new Scanner(System.in).nextLine();
+
+        System.out.print("Digite o cpf: ");
+        String cpf = new Scanner(System.in).nextLine();
 
         // cc = cadastrar cliente
         Cliente cc = new Cliente(nome, cpf);
         return cc;
     }
 
-    // PESQUISAR
-    /*
-     * tirar o void e add o return public static void Pesquisar(List<Pessoa> lista)
-     * { System.out.print("Busca por cpf: "); String cpf = new
-     * Scanner(System.in).nextLine();
-     * 
-     * for(int i = 0; i < lista.size(); i++) { if(lista.contains(cpf)) {
-     * 
-     * } }
-     * 
-     * }
-     */
+    public static void Pesquisar(List<Pessoa> lista) {
+        Scanner input = new Scanner(System.in);
+
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.print("Digite o cpf que procura: ");
+            String cpfP = input.next();
+            if (lista.get(i) instanceof Cliente) {
+                System.out.println(cpfP + " pertence a Cliente");
+                break;
+            } else {
+                System.out.println(cpfP + " pertence a Empregado");
+                break;
+            }
+        }
+    }
 
     public static void RemoverPessoa(List<Pessoa> lista) {
         Scanner sc = new Scanner(System.in);
 
         for (int i = 0; i < lista.size(); i++) {
-            System.out.print("Digite o cpf que deseja remover: ");
-            Pessoa ParaApagar = lista.get(i);
 
-            String ProcuraCpf = sc.nextLine();
-            if (ParaApagar.getCpf().equals(ProcuraCpf)) {
+            System.out.println("Digite SIM para continutar e deletar ou digite NAO para voltar ao menu");
+            String apagar = sc.nextLine();
+            if (apagar.toLowerCase() != "nao" || apagar.toLowerCase() != "não") {
+                System.out.print("Digite o cpf que deseja remover: ");
 
-                lista.remove(ParaApagar);
+                Pessoa ParaApagar = lista.get(i);
+
+                String ProcuraCpf = sc.nextLine();
+                if (ParaApagar.getCpf().equals(ProcuraCpf)) {
+                    lista.remove(ParaApagar);
+                }
+            } else {
                 break;
             }
-
         }
     }
 
